@@ -26,7 +26,7 @@ cog_publisher::cog_publisher()
     //get link name from std::map
     std::string link_name = itr->first;
     //get link parameters
-    KDL::RigidBodyInertia  rigid_body_inertia = itr->second.segment.getInertia();
+    KDL::RigidBodyInertia rigid_body_inertia = itr->second.segment.getInertia();
     //get Mass of link
     double mass = rigid_body_inertia.getMass();
     //get Center of Gravity parameters
@@ -34,7 +34,6 @@ cog_publisher::cog_publisher()
     double cog_point_x = cog_point.x();
     double cog_point_y = cog_point.y();
     double cog_point_z = cog_point.z();
-    std::cout << cog_point_x << "," << cog_point_y << "," << cog_point_z << std::endl;
   }
 }
 
