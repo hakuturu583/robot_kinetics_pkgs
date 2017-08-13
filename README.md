@@ -8,6 +8,6 @@ ROS packages about robot kinetics(get center of gravity etc..)
 calculate center of gravity from /robot_description parameters and /tf topic  
 ### topics and parameters  
 - parameters  
-robot_description  
+/robot_description  
 - subscribe topic  
 /tf  
