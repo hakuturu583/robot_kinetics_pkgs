@@ -25,3 +25,4 @@ center of gravity in each link
 - /cog/robot  
 message type :
 [geometry_msgs/PointStamped](http://docs.ros.org/jade/api/geometry_msgs/html/msg/PointStamped.html)  
+center of gravity in whole robot  
