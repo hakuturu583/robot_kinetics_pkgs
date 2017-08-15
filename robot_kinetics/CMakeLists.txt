@@ -147,7 +147,7 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/robot_kinetics_node.cpp)
-set(COG_PUBLISHER_SRC src/cog_publisher_node.cpp src/cog_publisher.cpp src/joint.cpp)
+set(COG_PUBLISHER_SRC src/cog_publisher_node.cpp src/cog_publisher.cpp src/robot_link.cpp)
 add_executable(cog_publisher_node ${COG_PUBLISHER_SRC})
 
 ## Rename C++ executable without prefix
