@@ -18,6 +18,8 @@ type : int
 default: 50  
 ##### subscribe topics  
 - /tf  
+message_type :
+tf2_msgs/TFMessage  
 ##### publish topics  
 - /cog/links  
 message type : [sensor_msgs/PointCloud](http://docs.ros.org/api/sensor_msgs/html/msg/PointCloud.html)  
