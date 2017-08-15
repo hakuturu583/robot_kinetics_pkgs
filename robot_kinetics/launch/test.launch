@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-  <!-- Load the URDF Model -->
-  <arg name="version" default="V40" />
-  <!-- move /nao_description/urdf/naoV40_generated_urdf/* to /robot_kinetics/urdf/* -->
-  <param name="robot_description" command="$(find xacro)/xacro.py $(find robot_kinetics)/urdf/nao_robot.xacro" />
-  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
-  <include file="$(find gazebo_ros)/launch/empty_world.launch" />
-  <arg name="use_pid" value="true"/>
-  <group if="$(arg use_pid)">
-    <rosparam file="$(find nao_gazebo_plugin)/config/gazebo_ros_control_params.yaml" command="load"/>
-  </group>
-  <!-- Call Nao Robot Trajectory Controller -->
-  <include file="$(find nao_control)/launch/nao_control_trajectory.launch"/>
-  <!-- Spawn a robot into Gazebo -->
-  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -x -0.5 -y 1 -z 0.535 -model nao_v40" />
+  <include file="$(find nao_gazebo_plugin)/launch/nao_gazebo.launch"/>
   <!-- Launch rviz -->
   <node name="rviz" pkg="rviz" type="rviz" args="" output="screen" respawn="false">
   </node>
