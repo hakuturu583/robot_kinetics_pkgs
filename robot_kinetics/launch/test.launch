@@ -19,4 +19,12 @@
     <remap from="/robot/contact_states" to="/nao_robot/FSR/RFoot/FrontLeft" />
   </node>
 
+  <node name="left_foot_state_publisher" pkg="robot_kinetics" type="foot_state_publisher_node.py" args="" output="screen" respawn="true">
+    <param name="~config_filename" value="nao_left_foot_config.xml" type="str"/>
+  </node>
+
+  <node name="right_foot_state_publisher" pkg="robot_kinetics" type="foot_state_publisher_node.py" args="" output="screen" respawn="true">
+    <param name="~config_filename" value="nao_right_foot_config.xml" type="str"/>
+  </node>
+
 </launch>
