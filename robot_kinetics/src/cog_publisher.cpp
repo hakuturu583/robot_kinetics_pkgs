@@ -24,9 +24,9 @@ cog_publisher::cog_publisher()
 {
   std::string robot_description_text;
   //get publish_freme parameter
-  nh.param<std::string>("/publish_frame", publish_frame, "base_link");
+  nh.param<std::string>(ros::this_node::getName()+"/publish_frame", publish_frame, "base_link");
   //get publish_rate parameter
-  nh.param<int>("/publish_rate", publish_rate, 50);
+  nh.param<int>(ros::this_node::getName()+"/publish_rate", publish_rate, 50);
   //get robot_description parameter
   nh.getParam("/robot_description", robot_description_text);
   KDL::Tree robot_tree;

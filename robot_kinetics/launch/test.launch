@@ -11,20 +11,24 @@
   <node name="cog_publisher_node" pkg="robot_kinetics" type="cog_publisher_node" args="" output="screen" respawn="true">
   </node>
 
-  <node name="l_foot_converter" pkg="gazebo_robot_kinetics" type="from_contact_state_to_wrench_stamped_node" args="" output="screen" respawn="true">
+  <node name="left_foot_converter" pkg="gazebo_robot_kinetics" type="from_contact_state_to_wrench_stamped_node" args="" output="screen" respawn="true">
     <remap from="/robot/contact_states" to="/nao_robot/FSR/LFoot/FrontLeft" />
   </node>
 
-  <node name="r_foot_converter" pkg="gazebo_robot_kinetics" type="from_contact_state_to_wrench_stamped_node" args="" output="screen" respawn="true">
+  <node name="right_foot_converter" pkg="gazebo_robot_kinetics" type="from_contact_state_to_wrench_stamped_node" args="" output="screen" respawn="true">
     <remap from="/robot/contact_states" to="/nao_robot/FSR/RFoot/FrontLeft" />
   </node>
 
   <node name="left_foot_state_publisher" pkg="robot_kinetics" type="foot_state_publisher_node.py" args="" output="screen" respawn="true">
     <param name="~config_filename" value="nao_left_foot_config.xml" type="str"/>
+    <param name="~foot_id" value="0" type="int"/>
+    <remap from="/left_foot_state_publisher/wrench_stamped" to="/left_foot_converter/wrentch_stamped" />
   </node>
 
   <node name="right_foot_state_publisher" pkg="robot_kinetics" type="foot_state_publisher_node.py" args="" output="screen" respawn="true">
     <param name="~config_filename" value="nao_right_foot_config.xml" type="str"/>
+    <param name="~foot_id" value="1" type="int"/>
+    <remap from="/right_foot_state_publisher/wrench_stamped" to="/right_foot_converter/wrentch_stamped" />
   </node>
 
 </launch>
