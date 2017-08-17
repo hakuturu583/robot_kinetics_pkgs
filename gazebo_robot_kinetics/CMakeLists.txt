@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(gazebo_robot_kinetics)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -107,7 +107,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+  INCLUDE_DIRS include
 #  LIBRARIES gazebo_robot_kinetics
 #  CATKIN_DEPENDS gazebo_ros geometry_msgs roscpp roslib rospy sensor_msgs tf2
 #  DEPENDS system_lib
@@ -120,9 +120,11 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
 )
+
+set(FROM_CONTACT_STATE_TO_WRENCH_STAMPED_NODE_SRC src/from_contact_state_to_wrench_stamped_node.cpp src/wrench_stamped_converter.cpp)
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -138,6 +140,7 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/gazebo_robot_kinetics_node.cpp)
+add_executable(from_contact_state_to_wrench_stamped_node ${FROM_CONTACT_STATE_TO_WRENCH_STAMPED_NODE_SRC})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -153,6 +156,8 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+
+target_link_libraries(from_contact_state_to_wrench_stamped_node ${catkin_LIBRARIES})
 
 #############
 ## Install ##

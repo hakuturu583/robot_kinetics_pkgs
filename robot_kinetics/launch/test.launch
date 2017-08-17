@@ -11,4 +11,12 @@
   <node name="cog_publisher_node" pkg="robot_kinetics" type="cog_publisher_node" args="" output="screen" respawn="true">
   </node>
 
+  <node name="l_foot_converter" pkg="gazebo_robot_kinetics" type="from_contact_state_to_wrench_stamped_node" args="" output="screen" respawn="true">
+    <remap from="/robot/contact_states" to="/nao_robot/FSR/LFoot/FrontLeft" />
+  </node>
+
+  <node name="r_foot_converter" pkg="gazebo_robot_kinetics" type="from_contact_state_to_wrench_stamped_node" args="" output="screen" respawn="true">
+    <remap from="/robot/contact_states" to="/nao_robot/FSR/RFoot/FrontLeft" />
+  </node>
+
 </launch>
