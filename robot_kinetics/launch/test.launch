@@ -2,7 +2,7 @@
 <launch>
   <include file="$(find nao_gazebo_plugin)/launch/nao_gazebo.launch"/>
   <!-- Launch rviz -->
-  <node name="rviz" pkg="rviz" type="rviz" args="" output="screen" respawn="false">
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_kinetics)/config/robot_kinetics.rviz" output="screen" respawn="false">
   </node>
   <!-- Launch robot_state_publisher -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" args="" output="screen" respawn="true">
